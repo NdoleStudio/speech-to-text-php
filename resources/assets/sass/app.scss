@@ -1,0 +1,157 @@
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+@import "variables";
+
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: $font-family-sans-serif;
+    font-weight: 200;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.full-height {
+    min-height: 100vh;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 576px) {
+    .full-height {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .full-height {
+        form, input {
+            max-width: 100%;
+        }
+    }
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.title {
+    text-align: center;
+    font-size: 84px;
+    margin-bottom: 40px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+}
+
+.get-weather-btn {
+    margin-top: 22px;
+
+}
+
+@screen md {
+    .content {
+        width: 800px;
+    }
+}
+
+@screen lg {
+    .content {
+        width: 800px;
+    }
+}
+
+@media screen and (min-height:1200px) {
+    .bottom {
+        position: absolute;
+        bottom: 5px;
+    }
+}
+
+@media screen and (max-height:1200px) {
+    .bottom {
+        margin-top: -20px;
+    }
+}
+
+.bottom {
+    width: 100%;
+    text-align: center;
+}
+
+/**
+ * Google maps
+ */
+.pac-item {
+    font-family: $font-family-sans-serif;
+    font-size: $font-size-base;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.weather-information {
+    margin-top: 50px;
+
+    h2 {
+        margin-bottom: 30px;
+    }
+
+    .weather-details-card {
+        min-height: 400px;
+    }
+}
+
+/**
+ * Spinner
+ */
+.lds-hourglass {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+
+    &:after {
+        content: " ";
+        display: inline-block;
+        border-radius: 50%;
+        width: 0;
+        height: 0;
+        margin: 6px;
+        box-sizing: border-box;
+        border: 26px solid;
+        border-color: #636b6f transparent #636b6f transparent;
+        animation: lds-hourglass 1.2s infinite;
+    }
+}
+
+@keyframes lds-hourglass {
+    0% {
+        transform: rotate(0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    50% {
+        transform: rotate(900deg);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    100% {
+        transform: rotate(1800deg);
+    }
+}

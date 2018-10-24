@@ -1,0 +1,33 @@
+version: '3'
+
+networks:
+  app-tier:
+    driver: bridge
+services:
+  php-fpm:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    networks:
+      - app-tier
+    ports:
+      - 9002:9000
+    volumes:
+      - .:/srv/app
+  workspace:
+    container_name: project-workspace
+    build:
+      context: .
+      dockerfile: .docker/workspace/Dockerfile
+    volumes:
+      - .:/srv/app
+  nginx:
+    build:
+      context: .
+      dockerfile: .docker/nginx/Dockerfile
+    networks:
+      - app-tier
+    ports:
+      - 8080:80
+    volumes:
+      - ./public:/srv/app/public
