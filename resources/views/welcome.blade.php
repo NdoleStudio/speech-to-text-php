@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div class="bottom">
+        <div class="w-full text-center -mt-8">
             Created with ❤️ by <a class="font-bold" href="https://twitter.com/ndolestudio" target="_blank">Ndole Studio LLC</a>.
         </div>
         <script src="{{mix('js/app.js')}}"></script>

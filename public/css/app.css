@@ -6424,11 +6424,6 @@ body {
   }
 }
 
-.bottom {
-  width: 100%;
-  text-align: center;
-}
-
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;

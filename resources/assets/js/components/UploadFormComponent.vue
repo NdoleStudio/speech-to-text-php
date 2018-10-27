@@ -8,7 +8,7 @@
             <p class="text-red text-xs italic" :class="{hidden: !uploadedFileIsInvalid}">Please upload a valid sound file</p>
         </div>
         <div class="md:w-1/4 px-3">
-            <button @click="submitFile" :class="{'cursor-not-allowed': isLoading}" class="bg-red get-weather-btn hover:text-black border-red border focus:outline-none border hover:bg-transparent text-white font-bold py-4 px-4 rounded" type="button">
+            <button @click="submitFile" :class="{'text-black cursor-not-allowed': isLoading, 'text-white bg-red' : !isLoading}" class="get-weather-btn hover:text-black border-red border focus:outline-none border hover:bg-transparent font-bold py-4 px-4 rounded" type="button">
                 Transcribe Audio
             </button>
         </div>

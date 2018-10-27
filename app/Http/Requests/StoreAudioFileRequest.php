@@ -24,7 +24,7 @@ class StoreAudioFileRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => 'required|mimes:ogg,oga,mp2,mp3,m2a,m3a,mpga,flac,midi,m4a,mp4a,wav,raw,weba,wma,',
+            'file' => 'required|file|max:4000|mimes:ogg,oga,mp2,mp3,m2a,m3a,mpga,flac,midi,m4a,mp4a,wav,raw,weba,wma,',
         ];
     }
 }

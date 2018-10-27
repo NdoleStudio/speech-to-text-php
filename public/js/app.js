@@ -12565,8 +12565,11 @@ var render = function() {
           "button",
           {
             staticClass:
-              "bg-red get-weather-btn hover:text-black border-red border focus:outline-none border hover:bg-transparent text-white font-bold py-4 px-4 rounded",
-            class: { "cursor-not-allowed": _vm.isLoading },
+              "get-weather-btn hover:text-black border-red border focus:outline-none border hover:bg-transparent font-bold py-4 px-4 rounded",
+            class: {
+              "text-black cursor-not-allowed": _vm.isLoading,
+              "text-white bg-red": !_vm.isLoading
+            },
             attrs: { type: "button" },
             on: { click: _vm.submitFile }
           },
