@@ -1,8 +1,8 @@
 <template>
-    <div class="w-full flex-center mt-4">
+    <div class="w-full flex-center mt-4 mb-4">
         <div class="md:w-4/5 rounded border border-blue-dark  content-center overflow-hidden shadow-lg">
             <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2 text-center">Transcription of Audio</div>
+                <div class="font-bold text-3xl mb-4 text-center">Transcription of Audio</div>
                 <p v-for="line in transcribedText" class="text-grey-darker text-base">
                     {{ line }}
                     <br>

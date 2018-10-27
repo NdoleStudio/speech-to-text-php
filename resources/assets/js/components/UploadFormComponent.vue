@@ -57,6 +57,7 @@
 
                 _self.changeIsLoading(true);
                 this.uploadedFileIsInvalid = false;
+                _self.changeTranscribedText(null);
                 if(_self.file === null) {
                     _self.changeIsLoading(false);
                     this.uploadedFileIsInvalid = true;

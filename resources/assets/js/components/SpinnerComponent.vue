@@ -1,5 +1,5 @@
 <template>
-    <div class="loading-spinner text-center font-bold">
+    <div class="loading-spinner text-center mb-4 font-bold">
         <div class="lds-hourglass"></div>
         <br>
         <h3>Transcribing...</h3>

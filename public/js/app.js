@@ -1812,6 +1812,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
             _self.changeIsLoading(true);
             this.uploadedFileIsInvalid = false;
+            _self.changeTranscribedText(null);
             if (_self.file === null) {
                 _self.changeIsLoading(false);
                 this.uploadedFileIsInvalid = true;
@@ -12380,7 +12381,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-full flex-center mt-4" }, [
+  return _c("div", { staticClass: "w-full flex-center mt-4 mb-4" }, [
     _c(
       "div",
       {
@@ -12392,7 +12393,7 @@ var render = function() {
           "div",
           { staticClass: "px-6 py-4" },
           [
-            _c("div", { staticClass: "font-bold text-xl mb-2 text-center" }, [
+            _c("div", { staticClass: "font-bold text-3xl mb-4 text-center" }, [
               _vm._v("Transcription of Audio")
             ]),
             _vm._v(" "),
@@ -12456,17 +12457,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "loading-spinner text-center font-bold" }, [
-      _c("div", { staticClass: "lds-hourglass" }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("h3", [_vm._v("Transcribing...")]),
-      _vm._v(" "),
-      _c("h4", [
-        _vm._v("It takes a while to transcribe the file so please be patient.")
-      ])
-    ])
+    return _c(
+      "div",
+      { staticClass: "loading-spinner text-center mb-4 font-bold" },
+      [
+        _c("div", { staticClass: "lds-hourglass" }),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Transcribing...")]),
+        _vm._v(" "),
+        _c("h4", [
+          _vm._v(
+            "It takes a while to transcribe the file so please be patient."
+          )
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

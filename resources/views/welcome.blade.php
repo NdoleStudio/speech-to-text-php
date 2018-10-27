@@ -26,12 +26,19 @@
                 <div class="title">
                     Audio To Text
                 </div>
+                <div class="text-center p-5 mb-10 bg-blue-lightest text-blue-dark border-blue border font-bold">
+                    <p>
+                        Select your audio file below and click on the <span class="text-red">"Transcribe Audio"</span> button to begin transcription
+                    </p>
+                    <br>
+                    <p>Transcription takes a while. If your audio file is 2 minutes long then it will take about 2 minutes to do the transcription</p>
+                </div>
                 <app></app>
             </div>
         </div>
 
         <div class="w-full text-center -mt-8">
-            Created with ❤️ by <a class="font-bold" href="https://twitter.com/ndolestudio" target="_blank">Ndole Studio LLC</a>.
+            Created with ❤️ by <a class="font-bold" href="https://twitter.com/NdoleStudio" target="_blank">Ndole Studio LLC</a>.
         </div>
         <script src="{{mix('js/app.js')}}"></script>
     </body>
