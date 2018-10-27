@@ -68,6 +68,7 @@ class PrepareAudioFileForTranscription implements ShouldQueue
                 ->execute();
 
             Log::info($shellCommand->getExecCommand());
+            
         }
 
         return $newFileName;
