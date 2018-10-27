@@ -47,9 +47,10 @@ trait TestCaseHelperTrait
 
     /**
      * @param string $className
-     * @param array  $keepOriginalMethods The method names of methods to not mock
+     * @param array $keepOriginalMethods The method names of methods to not mock
      *
      * @return PHPUnit_Framework_MockObject_MockObject
+     * @throws \ReflectionException
      */
     protected function getMockForConcreteClass($className, array $keepOriginalMethods = [])
     {
