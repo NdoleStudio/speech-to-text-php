@@ -13,3 +13,5 @@ yarn-error.log
 .env
 .phpunit.result.cache
 .idea
+auth/google-cloud.json
+storage/app/

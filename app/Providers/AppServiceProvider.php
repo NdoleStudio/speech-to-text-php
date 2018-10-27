@@ -2,10 +2,8 @@
 
 namespace App\Providers;
 
-use App\Weather\Configurations\DarkSkyApiConfiguration;
-use App\Weather\Services\DarkSkyWeatherDataService;
-use App\Weather\Services\WeatherDataService;
-use DavidePastore\Ipinfo\Ipinfo;
+use App\Configurations\IbmWatsonConfiguration;
+use Google\Cloud\Core\ServiceBuilder;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,20 +20,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(DarkSkyApiConfiguration::class, function () {
-            return new DarkSkyApiConfiguration(
-                config('services.darksky.excludedBlocks'),
-                config('services.darksky.apiEndpoint'),
-                config('services.darksky.units')
-            );
+        $this->app->bind(ServiceBuilder::class, function () {
+            return new ServiceBuilder([
+                'keyFilePath' => config('services.google.keyFilePath')
+            ]);
         });
 
-        $this->app->bind(WeatherDataService::class, DarkSkyWeatherDataService::class);
-
-        $this->app->bind(Ipinfo::class, function () {
-            return new Ipinfo([
-                'token' => config('services.ipinfo.accessToken')
-            ]);
+        $this->app->bind(IbmWatsonConfiguration::class, function () {
+            return new IbmWatsonConfiguration(
+                config('services.ibm.username'),
+                config('services.ibm.password')
+            );
         });
     }
 }

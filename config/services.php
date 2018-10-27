@@ -13,34 +13,8 @@ return [
     |
     */
 
-    'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
-    ],
-
-    'ses' => [
-        'key'    => env('SES_KEY'),
-        'secret' => env('SES_SECRET'),
-        'region' => env('SES_REGION', 'us-east-1'),
-    ],
-
-    'sparkpost' => [
-        'secret' => env('SPARKPOST_SECRET'),
-    ],
-
-    'stripe' => [
-        'model'  => App\User::class,
-        'key'    => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
-    ],
-
-    'darksky' => [
-        'apiEndpoint'    => env('DARK_SKY_API_ENDPOINT'),
-        'excludedBlocks' => explode(',', env('DARK_SKY_EXCLUDED_BLOCKS')),
-        'units'          => env('DARK_SKY_UNITS'),
-    ],
-
-    'ipinfo' => [
-        'accessToken' => env('IPINFO_ACCESS_TOKEN')
+    'ibm' => [
+        'username' => env('IBM_WATSON_USERNAME'),
+        'password' => env('IBM_WATSON_PASSWORD')
     ]
 ];
