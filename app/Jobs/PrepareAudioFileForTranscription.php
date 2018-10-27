@@ -66,6 +66,8 @@ class PrepareAudioFileForTranscription implements ShouldQueue
                 ->addArg('-ar', 16000, false)
                 ->addArg(   "'{$newFilePath}'")
                 ->execute();
+
+            Log::info($shellCommand->getExecCommand());
         }
 
         return $newFileName;
