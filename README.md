@@ -74,18 +74,18 @@ Follow the steps below to run this application locally
 1. Clone this git repository and `cd` into it
 
     ```bash
-    git clone git@bitbucket.org:bePolite/technical-assignment.git
+    git clone https://github.com/NdoleStudio/speech-to-text-php.git
     
-    cd technical-assignment
+    cd speech-to-text-php
     ```
 
-3 - Run the docker container
+2.  Run the docker container
 
     ```bash
     docker-compose up --build -d
     ```
 
-8 - Open your browser and visit localhost: [http://0.0.0.0:8888](http://0.0.0.0:8888).
+3.  Open your browser and visit localhost: [http://0.0.0.0:8888](http://0.0.0.0:8888).
 
 ### Running Tests
 
