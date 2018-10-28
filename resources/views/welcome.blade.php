@@ -12,6 +12,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <meta name="description" content="This web application helps you transcribe audio files into text with just a click"/>
+
+        <meta property="og:url" content="https://audio-to-text.ndolestudio.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Transcribe your audio files easily" />
+        <meta property="og:description" content="This web application helps you transcribe audio files into text with just a click"/>
+        <meta property="og:image" content="{{ asset('images/marketing.png') }}" />
+        <meta property="og:site_name" content="Hepilo" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@NdoleStudio" />
+        <meta name="twitter:creator" content="@NdoleStudio" />
+        <meta name="twitter:author" content="@NdoleStudio" />
+        <meta name="twitter:title" content="Transcribe your audio files easily" />
+        <meta name="twitter:description" content="This web application helps you transcribe audio files into text with just a click"/>
+        <meta name="twitter:image" content="{{ asset('images/marketing.png') }}" />
+
         <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.png') }}"/>
 
         <title>Audio To Text Translator️ | Ndole Studio</title>
