@@ -10,6 +10,14 @@ COPY . /srv/app
 
 WORKDIR /srv/app/
 
+ARG PORT
+
 EXPOSE $PORT
 
-CMD /bin/sh -c redis-server --daemonize yes && php artisan serve --host 0.0.0.0 --port $PORT & php artisan queue:listen --timeout=40000"]
+RUN echo $PORT
+
+RUN echo "#!/bin/bash \n redis-server --daemonize yes && php artisan serve --host 0.0.0.0 --port $PORT & php artisan queue:listen --timeout=40000" > ./entrypoint.sh
+
+RUN chmod +x ./entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]

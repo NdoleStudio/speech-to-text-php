@@ -1,3 +1,4 @@
 .git
 tests
 build
+.docker
