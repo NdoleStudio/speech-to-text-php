@@ -78,8 +78,8 @@
                     window.Pusher = Pusher;
                     let echoInstance = new Echo({
                         broadcaster: 'pusher',
-                        key: 'cbc277634142a181db8b',
-                        cluster: 'eu',
+                        key: process.env.MIX_PUSHER_APP_KEY,
+                        cluster: process.env.MIX_PUSHER_APP_CLUSTER,
                         encrypted: true
                     });
 

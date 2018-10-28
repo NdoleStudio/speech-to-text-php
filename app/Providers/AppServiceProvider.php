@@ -20,16 +20,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ServiceBuilder::class, function () {
-            return new ServiceBuilder([
-                'keyFilePath' => config('services.google.keyFilePath')
-            ]);
-        });
-
         $this->app->bind(IbmWatsonConfiguration::class, function () {
             return new IbmWatsonConfiguration(
                 config('services.ibm.username'),
-                config('services.ibm.password')
+                config('services.ibm.password'),
+                config('services.ibm.apiEndpoint')
             );
         });
     }

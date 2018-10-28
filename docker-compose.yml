@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  web:
+  workspace:
     container_name: project-workspace
     build:
       context: .

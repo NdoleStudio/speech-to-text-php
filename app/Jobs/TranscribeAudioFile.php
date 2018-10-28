@@ -8,15 +8,16 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Bus\Dispatcher;
 use Illuminate\Bus\Queueable;
+use Illuminate\Http\Request;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\Log;
 
 class TranscribeAudioFile implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, InteractsWithLocalFileSystem;
+
     /**
      * @var string
      */
@@ -52,10 +53,13 @@ class TranscribeAudioFile implements ShouldQueue
         Dispatcher $commandDispatcher
     ) {
         $response = $httpClient->request(
-            'POST',
-            'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize',
+            Request::METHOD_POST,
+            $ibmWatsonConfiguration->getApiEndpoint(),
             [
-                'auth' => [$ibmWatsonConfiguration->getUsername(), $ibmWatsonConfiguration->getPassword()],
+                'auth' => [
+                    $ibmWatsonConfiguration->getUsername(),
+                    $ibmWatsonConfiguration->getPassword()
+                ],
                 'headers' => [
                     'Content-Type' => 'audio/flac',
                 ],

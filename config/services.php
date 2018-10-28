@@ -14,7 +14,8 @@ return [
     */
 
     'ibm' => [
-        'username' => env('IBM_WATSON_USERNAME'),
-        'password' => env('IBM_WATSON_PASSWORD')
+        'username' => env('SPEECH_TO_TEXT_USERNAME'),
+        'password' => env('SPEECH_TO_TEXT_PASSWORD'),
+        'apiEndpoint' => env('SPEECH_TO_TEXT_API_ENDPOINT')
     ]
 ];
