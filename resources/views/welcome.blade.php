@@ -50,7 +50,8 @@
                     <br>
                     <p>Transcription takes a while. If your audio file is 2 minutes long then it will take about 2 minutes to do the transcription</p>
                 </div>
-                <app></app>
+                <app :pusher-key="'{{ config('broadcasting.connections.pusher.key') }}'"
+                     :pusher-cluster="'{{ config('broadcasting.connections.pusher.options.cluster') }}'"></app>
             </div>
         </div>
 

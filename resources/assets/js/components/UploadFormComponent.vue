@@ -29,7 +29,11 @@
 
     export default {
         name: "UploadFormComponent",
-        props: ['isLoading'],
+        props: [
+            'isLoading',
+            'pusherKey',
+            'pusherCluster'
+        ],
         data () {
           return {
               file: null,
@@ -76,10 +80,11 @@
                     }
                 ).then(function(response){
                     window.Pusher = Pusher;
+
                     let echoInstance = new Echo({
                         broadcaster: 'pusher',
-                        key: process.env.MIX_PUSHER_APP_KEY,
-                        cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+                        key: _self.pusherKey,
+                        cluster: _self.pusherCluster,
                         encrypted: true
                     });
 
@@ -93,6 +98,7 @@
                         });
                 })
                 .catch(function(response){
+                    console.log(response);
                     let errorsArray = [];
                     for (let property in response.data.errors) {
                         if (response.data.errors.hasOwnProperty(property)) {

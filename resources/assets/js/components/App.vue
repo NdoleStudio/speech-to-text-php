@@ -1,6 +1,11 @@
 <template>
     <div>
-        <upload-form-component @changeIsLoading="changeIsLoading" @changeTranscribedText="changeTranscribedText" :isLoading="isLoading"></upload-form-component>
+        <upload-form-component
+                @changeIsLoading="changeIsLoading"
+                @changeTranscribedText="changeTranscribedText"
+                :pusherKey="pusherKey"
+                :pusherCluster="pusherCluster"
+                :isLoading="isLoading"></upload-form-component>
         <spinner-component v-if="isLoading"></spinner-component>
         <text-component :transcribedText="transcribedText" v-if="transcribedText !== null"></text-component>
     </div>
@@ -18,6 +23,10 @@
             SpinnerComponent,
             TextComponent
         },
+        props: [
+            'pusherKey',
+            'pusherCluster'
+        ],
         data () {
             return {
                 isLoading: false,
