@@ -4,10 +4,10 @@
 
 ### Introduction
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/3d71c99c4fd08c124e9e/maintainability)](https://codeclimate.com/github/AchoArnold/laravel-starter-project/maintainability)
-<a href="https://codeclimate.com/github/AchoArnold/laravel-starter-project/test_coverage"><img src="https://api.codeclimate.com/v1/badges/3d71c99c4fd08c124e9e/test_coverage" /></a>
+[![Maintainability](https://api.codeclimate.com/v1/badges/e553130d8d6ad20ee2fc/maintainability)](https://codeclimate.com/github/NdoleStudio/speech-to-text-php/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e553130d8d6ad20ee2fc/test_coverage)](https://codeclimate.com/github/NdoleStudio/speech-to-text-php/test_coverage)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![Build Status](https://travis-ci.org/AchoArnold/laravel-starter-project.svg?branch=master)](https://travis-ci.org/AchoArnold/laravel-starter-project)
+[![Build Status](https://travis-ci.org/NdoleStudio/speech-to-text-php.svg?branch=master)](https://travis-ci.org/NdoleStudio/speech-to-text-php)
 
 This service service uses IBM's [speech recognition capabilities](https://www.ibm.com/watson/services/speech-to-text) to convert speech in multiple languages into text. The transcription of incoming audio is continuously sent back to the client upon completion. The service is accessed via a REST HTTP interface.
 
