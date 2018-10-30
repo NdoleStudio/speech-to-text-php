@@ -28,11 +28,11 @@
     "autoload": {
         "classmap": [
             "database/seeds",
-            "database/factories",
-            "tests/TestCase.php"
+            "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Tests\\": "tests/"
         }
     },
     "autoload-dev": {
