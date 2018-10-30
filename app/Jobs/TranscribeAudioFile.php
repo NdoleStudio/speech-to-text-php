@@ -3,14 +3,13 @@
 namespace App\Jobs;
 
 use App\Configurations\IbmWatsonConfiguration;
+use App\Services\FileOpenerService;
 use App\Traits\InteractsWithLocalFileSystem;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Bus\Dispatcher;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Http\Request;
 use Illuminate\Queue\InteractsWithQueue;
@@ -45,17 +44,16 @@ class TranscribeAudioFile implements ShouldQueue
     /**
      * @param IbmWatsonConfiguration $ibmWatsonConfiguration
      * @param Client                 $httpClient
-     * @param FilesystemManager      $filesystemManager
      * @param Dispatcher             $commandDispatcher
+     * @param FileOpenerService      $fileOpenerService
      *
-     * @throws FileNotFoundException
      * @throws GuzzleException
      */
     public function handle(
         IbmWatsonConfiguration $ibmWatsonConfiguration,
         Client $httpClient,
-        FilesystemManager $filesystemManager,
-        Dispatcher $commandDispatcher
+        Dispatcher $commandDispatcher,
+        FileOpenerService $fileOpenerService
     ) {
         $response = $httpClient->request(
             Request::METHOD_POST,
@@ -68,7 +66,7 @@ class TranscribeAudioFile implements ShouldQueue
                 'headers' => [
                     'Content-Type' => 'audio/flac',
                 ],
-                'body' => $filesystemManager->disk()->get($this->getFilePath($this->filename)),
+                'body' => $fileOpenerService->openForReading($this->getFilePath($this->filename)),
             ]
         );
 

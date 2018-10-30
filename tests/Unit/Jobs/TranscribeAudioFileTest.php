@@ -5,10 +5,9 @@ namespace Tests\Unit\Jobs;
 use App\Configurations\IbmWatsonConfiguration;
 use App\Jobs\ProcessTranscribedText;
 use App\Jobs\TranscribeAudioFile;
+use App\Services\FileOpenerService;
 use GuzzleHttp\Client;
 use Illuminate\Bus\Dispatcher;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Http\Response;
 use PHPUnit_Framework_MockObject_MockObject;
 use Psr\Http\Message\MessageInterface;
@@ -41,27 +40,22 @@ class TranscribeAudioFileTest extends TestCase
     private $httpClient;
 
     /**
-     * @var FilesystemManager|PHPUnit_Framework_MockObject_MockObject
-     */
-    private $fileSystemManager;
-
-    /**
-     * @var Filesystem|PHPUnit_Framework_MockObject_MockObject
-     */
-    private $filesystem;
-
-    /**
      * @var Dispatcher|PHPUnit_Framework_MockObject_MockObject
      */
     private $commandDispatcher;
 
     /**
-     * @var StreamInterface
+     * @var StreamInterface|PHPUnit_Framework_MockObject_MockObject
      */
     private $streamInterface;
 
     /**
-     * @var Response
+     * @var FileOpenerService|PHPUnit_Framework_MockObject_MockObject
+     */
+    private $fileOpenerService;
+
+    /**
+     * @var Response|PHPUnit_Framework_MockObject_MockObject
      */
     private $httpMessage;
 
@@ -73,8 +67,6 @@ class TranscribeAudioFileTest extends TestCase
     protected function setUp()
     {
         parent::setUp();
-
-        $this->filesystem = $this->getMockForConcreteClass(Filesystem::class);
 
         $this->streamInterface = $this->getMockForConcreteClass(StreamInterface::class);
         $this->streamInterface
@@ -88,12 +80,9 @@ class TranscribeAudioFileTest extends TestCase
 
         $this->ibmWatsonConfiguration = $this->getMockForConcreteClass(IbmWatsonConfiguration::class);
 
-        $this->httpClient = $this->getMockForConcreteClass(Client::class);
+        $this->fileOpenerService = $this->getMockForConcreteClass(FileOpenerService::class);
 
-        $this->fileSystemManager = $this->getMockForConcreteClass(FilesystemManager::class);
-        $this->fileSystemManager
-            ->method($this->methodName([$this->fileSystemManager, 'disk']))
-            ->willReturn($this->filesystem);
+        $this->httpClient = $this->getMockForConcreteClass(Client::class);
 
         $this->commandDispatcher = $this->getMockForConcreteClass(Dispatcher::class);
 
@@ -110,8 +99,8 @@ class TranscribeAudioFileTest extends TestCase
         $this->SUT->handle(
             $this->ibmWatsonConfiguration,
             $this->httpClient,
-            $this->fileSystemManager,
-            $this->commandDispatcher
+            $this->commandDispatcher,
+            $this->fileOpenerService
         );
     }
 
@@ -129,8 +118,8 @@ class TranscribeAudioFileTest extends TestCase
         $this->SUT->handle(
             $this->ibmWatsonConfiguration,
             $this->httpClient,
-            $this->fileSystemManager,
-            $this->commandDispatcher
+            $this->commandDispatcher,
+            $this->fileOpenerService
         );
     }
 }
