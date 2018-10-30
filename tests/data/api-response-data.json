@@ -1,0 +1,32 @@
+{
+  "results":[
+    {
+      "alternatives":[
+        {
+          "confidence":0.51,
+          "transcript":"hello this is Arnold I'm testing their economics let's see how deep coach "
+        }
+      ],
+      "final":true
+    },
+    {
+      "alternatives":[
+        {
+          "confidence":0.334,
+          "transcript":"how you doing today on August ninth "
+        }
+      ],
+      "final":true
+    },
+    {
+      "alternatives":[
+        {
+          "confidence":0.716,
+          "transcript":"%HESITATION I think it's fine "
+        }
+      ],
+      "final":true
+    }
+  ],
+  "result_index":0
+}

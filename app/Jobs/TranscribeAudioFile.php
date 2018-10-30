@@ -8,6 +8,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Bus\Dispatcher;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Http\Request;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -43,13 +46,16 @@ class TranscribeAudioFile implements ShouldQueue
     /**
      * @param IbmWatsonConfiguration $ibmWatsonConfiguration
      * @param Client $httpClient
+     * @param FilesystemManager $filesystemManager
      * @param Dispatcher $commandDispatcher
      *
+     * @throws FileNotFoundException
      * @throws GuzzleException
      */
     public function handle(
         IbmWatsonConfiguration $ibmWatsonConfiguration,
         Client $httpClient,
+        FilesystemManager $filesystemManager,
         Dispatcher $commandDispatcher
     ) {
         $response = $httpClient->request(
@@ -63,7 +69,7 @@ class TranscribeAudioFile implements ShouldQueue
                 'headers' => [
                     'Content-Type' => 'audio/flac',
                 ],
-                'body' => fopen($this->getFilePath($this->filename), 'r')
+                'body' =>  $filesystemManager->disk()->get($this->getFilePath($this->filename))
             ]
         );
 

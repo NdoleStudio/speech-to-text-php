@@ -13,11 +13,6 @@ class AudioTranscribed implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * @var string
-     */
-    private $filename;
-
-    /**
      * @var array
      */
     private $transcribedText;
