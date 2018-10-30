@@ -76,7 +76,9 @@ class TranscribeAudioFile implements ShouldQueue
         $jsonResult = json_decode(trim($response->getBody()->getContents()));
 
         $output = array_map(function ($result) {
-            return ucfirst(str_replace('%HESITATION','...', $result->alternatives[0]->transcript));
+            return trim(
+                ucfirst(str_replace('%HESITATION','...', $result->alternatives[0]->transcript))
+            );
         }, $jsonResult->results);
 
         $commandDispatcher->dispatch(new ProcessTranscribedText($output, $this->oldFilename));

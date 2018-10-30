@@ -27,7 +27,7 @@ class ProcessTranscribedTextTest extends TestCase
      * @var Dispatcher|PHPUnit_Framework_MockObject_MockObject
      */
     private $eventDispatcher;
-    
+
     /**
      * @var ProcessTranscribedText
      */
@@ -42,9 +42,6 @@ class ProcessTranscribedTextTest extends TestCase
         $this->SUT = new ProcessTranscribedText($this->transcribedText, $this->oldFileName);
     }
 
-    /**
-     * @throws \ReflectionException
-     */
     public function test_that_the_command_dispatches_the_audio_transcribed_event()
     {
         $this->eventDispatcher
@@ -54,8 +51,4 @@ class ProcessTranscribedTextTest extends TestCase
 
         $this->SUT->handle($this->eventDispatcher);
     }
-
-
-
-
 }
