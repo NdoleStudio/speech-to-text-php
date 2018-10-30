@@ -6,6 +6,7 @@ language: php
 php:
   - '7.2'
 before_script:
+  - cp .env.texting .env
   - composer install --no-dev
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter

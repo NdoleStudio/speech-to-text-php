@@ -10,7 +10,6 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\Log;
 use mikehaertl\shellcommand\Command;
 
 class PrepareAudioFileForTranscription implements ShouldQueue
@@ -59,15 +58,13 @@ class PrepareAudioFileForTranscription implements ShouldQueue
         $newFileName = 'new_' . pathinfo($this->fileName, PATHINFO_FILENAME) . '.flac';
         $newFilePath = $this->getFilePath($newFileName);
 
-        if(!$filesystemManager->exists($newFilePath)) {
+        if(!$filesystemManager->disk()->exists($newFilePath)) {
             $shellCommand->setCommand('ffmpeg')
                 ->addArg('-i', $filePath)
                 ->addArg('-ac', 1, false)
                 ->addArg('-ar', 16000, false)
                 ->addArg(   "'{$newFilePath}'")
                 ->execute();
-
-            Log::info($shellCommand->getExecCommand());
         }
 
         return $newFileName;
