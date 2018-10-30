@@ -17,6 +17,7 @@ class ProcessTranscribedText implements ShouldQueue
      * @var array
      */
     private $transcribedText;
+
     /**
      * @var string
      */
