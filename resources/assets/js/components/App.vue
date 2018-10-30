@@ -12,34 +12,31 @@
 </template>
 
 <script>
-    import UploadFormComponent from './UploadFormComponent';
-    import SpinnerComponent from './SpinnerComponent';
-    import TextComponent from './TextComponent';
+import UploadFormComponent from "./UploadFormComponent";
+import SpinnerComponent from "./SpinnerComponent";
+import TextComponent from "./TextComponent";
 
-    export default {
-        name: "App",
-        components: {
-            UploadFormComponent,
-            SpinnerComponent,
-            TextComponent
+export default {
+    name: "App",
+    components: {
+        UploadFormComponent,
+        SpinnerComponent,
+        TextComponent
+    },
+    props: ["pusherKey", "pusherCluster"],
+    data() {
+        return {
+            isLoading: false,
+            transcribedText: null
+        };
+    },
+    methods: {
+        changeIsLoading(isLoadingValue) {
+            this.isLoading = isLoadingValue;
         },
-        props: [
-            'pusherKey',
-            'pusherCluster'
-        ],
-        data () {
-            return {
-                isLoading: false,
-                transcribedText: null
-            }
-        },
-        methods: {
-            changeIsLoading(isLoadingValue) {
-                this.isLoading = isLoadingValue
-            },
-            changeTranscribedText(transcribedText) {
-                this.transcribedText = transcribedText;
-            }
+        changeTranscribedText(transcribedText) {
+            this.transcribedText = transcribedText;
         }
     }
+};
 </script>

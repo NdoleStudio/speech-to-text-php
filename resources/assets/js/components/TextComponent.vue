@@ -19,10 +19,10 @@
 </template>
 
 <script>
-    export default {
-        name: "TextComponent",
-        props: ['transcribedText']
-    }
+export default {
+    name: "TextComponent",
+    props: ["transcribedText"]
+};
 </script>
 
 <style scoped>

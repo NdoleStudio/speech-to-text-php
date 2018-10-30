@@ -23,66 +23,64 @@
 </template>
 
 <script>
-    import axios from "axios";
-    import Echo from 'laravel-echo';
-    import Pusher from 'pusher-js';
+import axios from "axios";
+import Echo from "laravel-echo";
+import Pusher from "pusher-js";
 
-    export default {
-        name: "UploadFormComponent",
-        props: [
-            'isLoading',
-            'pusherKey',
-            'pusherCluster'
-        ],
-        data () {
-          return {
-              file: null,
-              uploadedFileIsInvalid: false,
-              errors: []
-          }
-        },
-        mounted () {
-            axios.interceptors.response.use(response => response, (error) => {
+export default {
+    name: "UploadFormComponent",
+    props: ["isLoading", "pusherKey", "pusherCluster"],
+    data() {
+        return {
+            file: null,
+            uploadedFileIsInvalid: false,
+            errors: []
+        };
+    },
+    mounted() {
+        axios.interceptors.response.use(
+            response => response,
+            error => {
                 return Promise.reject(error.response);
-            });
+            }
+        );
+    },
+    methods: {
+        handleFileUpload() {
+            this.file = this.$refs.fileInput.files[0];
+            this.uploadedFileIsInvalid = false;
+            this.clearErrors();
         },
-        methods: {
-            handleFileUpload () {
-                this.file = this.$refs.fileInput.files[0];
-                this.uploadedFileIsInvalid = false;
-                this.clearErrors();
-            },
-            submitFile() {
-                let _self = this;
+        submitFile() {
+            let _self = this;
 
-                if(_self.isLoading === true) {
-                    return ;
-                }
+            if (_self.isLoading === true) {
+                return;
+            }
 
-                _self.changeIsLoading(true);
-                this.uploadedFileIsInvalid = false;
-                _self.changeTranscribedText(null);
-                if(_self.file === null) {
-                    _self.changeIsLoading(false);
-                    this.uploadedFileIsInvalid = true;
-                    return;
-                }
+            _self.changeIsLoading(true);
+            this.uploadedFileIsInvalid = false;
+            _self.changeTranscribedText(null);
+            if (_self.file === null) {
+                _self.changeIsLoading(false);
+                this.uploadedFileIsInvalid = true;
+                return;
+            }
 
-                let formData = new FormData();
-                formData.append('file', _self.file);
+            let formData = new FormData();
+            formData.append("file", _self.file);
 
-                axios.post( '/store-sound-file',
-                    formData,
-                    {
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        }
+            axios
+                .post("/store-sound-file", formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data"
                     }
-                ).then(function(response){
+                })
+                .then(function(response) {
                     window.Pusher = Pusher;
 
                     let echoInstance = new Echo({
-                        broadcaster: 'pusher',
+                        broadcaster: "pusher",
                         key: _self.pusherKey,
                         cluster: _self.pusherCluster,
                         encrypted: true
@@ -90,14 +88,14 @@
 
                     echoInstance
                         .channel(response.data.payload.filename)
-                        .listen('AudioTranscribed', (data) => {
+                        .listen("AudioTranscribed", data => {
                             _self.changeTranscribedText(data);
                             _self.changeIsLoading(false);
                             _self.file = null;
-                            _self.$refs.fileInput.value = '';
+                            _self.$refs.fileInput.value = "";
                         });
                 })
-                .catch(function(response){
+                .catch(function(response) {
                     console.log(response);
                     let errorsArray = [];
                     for (let property in response.data.errors) {
@@ -108,22 +106,21 @@
                     _self.errors = errorsArray;
                     _self.changeIsLoading(false);
                 });
-            },
-            changeIsLoading(newValue) {
-                this.$emit('changeIsLoading', newValue);
-            },
-
-            changeTranscribedText(text) {
-                this.$emit('changeTranscribedText', text);
-            },
-
-            clearErrors() {
-                this.errors = [];
-            }
         },
+        changeIsLoading(newValue) {
+            this.$emit("changeIsLoading", newValue);
+        },
+
+        changeTranscribedText(text) {
+            this.$emit("changeTranscribedText", text);
+        },
+
+        clearErrors() {
+            this.errors = [];
+        }
     }
+};
 </script>
 
 <style scoped>
-
 </style>
