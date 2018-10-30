@@ -12,6 +12,7 @@
         "itsgoingd/clockwork": "^3.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
+        "madewithlove/php-cs-fixer-config": "^1.10",
         "mikehaertl/php-shellcommand": "^1.4",
         "php-ffmpeg/php-ffmpeg": "^0.13.0",
         "predis/predis": "^1.1",
