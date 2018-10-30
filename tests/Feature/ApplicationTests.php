@@ -66,8 +66,8 @@ class ApplicationTests extends TestCase
             [UploadedFile::fake()->create('sound.avi', 500)],
             [UploadedFile::fake()->create('sound.mp4', 500)],
             [UploadedFile::fake()->create('sound.doc', 500)],
-            [UploadedFile::fake()->create('sound.pdf', 6000)],
-            [UploadedFile::fake()->create('sound.mp3', 6000)],
+            [UploadedFile::fake()->create('sound.pdf', 8000)],
+            [UploadedFile::fake()->create('sound.mp3', 8000)],
         ];
     }
 
