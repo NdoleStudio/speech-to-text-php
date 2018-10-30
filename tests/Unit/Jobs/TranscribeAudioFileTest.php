@@ -86,7 +86,6 @@ class TranscribeAudioFileTest extends TestCase
             ->method($this->methodName([$this->httpMessage, 'getBody']))
             ->willReturn($this->streamInterface);
 
-
         $this->ibmWatsonConfiguration = $this->getMockForConcreteClass(IbmWatsonConfiguration::class);
 
         $this->httpClient = $this->getMockForConcreteClass(Client::class);

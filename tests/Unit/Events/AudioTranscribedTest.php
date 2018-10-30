@@ -13,7 +13,7 @@ class AudioTranscribedTest extends TestCase
      */
     private $transcribedText = [
         'line 1',
-        'line 2'
+        'line 2',
     ];
 
     /**
@@ -25,7 +25,6 @@ class AudioTranscribedTest extends TestCase
      * @var AudioTranscribed
      */
     private $SUT;
-
 
     public function test_that_the_broadcast_on_method_returns_a_new_channel()
     {

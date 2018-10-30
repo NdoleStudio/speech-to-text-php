@@ -83,7 +83,6 @@ class PrepareAudioFileForTranscriptionTest extends TestCase
             ->willReturn(true);
 
         $this->SUT->handle($this->commandDispatcher, $this->shellCommand, $this->fileSystemManager);
-
     }
 
     public function test_that_the_command_does_not_convert_a_file_if_the_file_has_already_been_Converted()
@@ -104,9 +103,7 @@ class PrepareAudioFileForTranscriptionTest extends TestCase
             ->willReturn(true);
 
         $this->SUT->handle($this->commandDispatcher, $this->shellCommand, $this->fileSystemManager);
-
     }
-
 
     public function test_that_the_command_dispatches_the_transcribe_audio_file_command()
     {
@@ -122,6 +119,5 @@ class PrepareAudioFileForTranscriptionTest extends TestCase
             ->method($this->methodName([$this->commandDispatcher, 'dispatch']));
 
         $this->SUT->handle($this->commandDispatcher, $this->shellCommand, $this->fileSystemManager);
-
     }
 }

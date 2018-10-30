@@ -4,11 +4,11 @@ namespace App\Jobs;
 
 use App\Events\AudioTranscribed;
 use Illuminate\Bus\Queueable;
-use Illuminate\Events\Dispatcher;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Events\Dispatcher;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 class ProcessTranscribedText implements ShouldQueue
 {
@@ -26,7 +26,7 @@ class ProcessTranscribedText implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param array $transcribedText
+     * @param array  $transcribedText
      * @param string $oldFilename
      */
     public function __construct(array $transcribedText, string $oldFilename)
@@ -39,8 +39,6 @@ class ProcessTranscribedText implements ShouldQueue
      * Execute the job.
      *
      * @param Dispatcher $eventDispatcher
-     *
-     * @return void
      */
     public function handle(Dispatcher $eventDispatcher)
     {

@@ -9,13 +9,12 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Bus\Dispatcher;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Contracts\Filesystem\Filesystem;
-use Illuminate\Filesystem\FilesystemManager;
-use Illuminate\Http\Request;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Http\Request;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 class TranscribeAudioFile implements ShouldQueue
 {
@@ -45,9 +44,9 @@ class TranscribeAudioFile implements ShouldQueue
 
     /**
      * @param IbmWatsonConfiguration $ibmWatsonConfiguration
-     * @param Client $httpClient
-     * @param FilesystemManager $filesystemManager
-     * @param Dispatcher $commandDispatcher
+     * @param Client                 $httpClient
+     * @param FilesystemManager      $filesystemManager
+     * @param Dispatcher             $commandDispatcher
      *
      * @throws FileNotFoundException
      * @throws GuzzleException
@@ -64,20 +63,20 @@ class TranscribeAudioFile implements ShouldQueue
             [
                 'auth' => [
                     $ibmWatsonConfiguration->getUsername(),
-                    $ibmWatsonConfiguration->getPassword()
+                    $ibmWatsonConfiguration->getPassword(),
                 ],
                 'headers' => [
                     'Content-Type' => 'audio/flac',
                 ],
-                'body' =>  $filesystemManager->disk()->get($this->getFilePath($this->filename))
+                'body' => $filesystemManager->disk()->get($this->getFilePath($this->filename)),
             ]
         );
 
-        $jsonResult = json_decode(trim($response->getBody()->getContents()));
+        $jsonResult = \json_decode(\trim($response->getBody()->getContents()));
 
-        $output = array_map(function ($result) {
-            return trim(
-                ucfirst(str_replace('%HESITATION','...', $result->alternatives[0]->transcript))
+        $output = \array_map(function ($result) {
+            return \trim(
+                \ucfirst(\str_replace('%HESITATION', '...', $result->alternatives[0]->transcript))
             );
         }, $jsonResult->results);
 

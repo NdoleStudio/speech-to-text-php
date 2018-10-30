@@ -17,7 +17,7 @@ class ApiBaseController extends Controller
     {
         return new JsonResponse(
             [
-                'code'    => Response::HTTP_OK,
+                'code' => Response::HTTP_OK,
                 'payload' => $payload,
             ],
             Response::HTTP_OK

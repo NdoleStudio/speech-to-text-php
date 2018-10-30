@@ -13,4 +13,4 @@
 
 app('router')->get('/', 'ShowWelcomeController');
 
-app('router')->post('store-sound-file','StoreAudioFileController');
+app('router')->post('store-sound-file', 'StoreAudioFileController');

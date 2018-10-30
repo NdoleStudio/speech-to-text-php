@@ -3,10 +3,10 @@
 namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
 class AudioTranscribed implements ShouldBroadcast
 {
@@ -26,7 +26,7 @@ class AudioTranscribed implements ShouldBroadcast
      * Create a new event instance.
      *
      * @param string $channelName
-     * @param array $transcribedText
+     * @param array  $transcribedText
      */
     public function __construct(string $channelName, array $transcribedText)
     {

@@ -16,3 +16,4 @@ yarn-error.log
 auth/google-cloud.json
 storage/app/
 build
+.php_cs.cache

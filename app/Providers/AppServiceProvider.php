@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Configurations\IbmWatsonConfiguration;
-use Google\Cloud\Core\ServiceBuilder;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

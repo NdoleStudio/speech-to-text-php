@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \DavidePastore\Ipinfo\Host $host
+ * @var \DavidePastore\Ipinfo\Host
  */
 ?>
 

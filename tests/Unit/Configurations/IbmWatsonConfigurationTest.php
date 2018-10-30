@@ -15,7 +15,7 @@ class IbmWatsonConfigurationTest extends TestCase
     /**
      * @var string
      */
-    private $username  = 'username';
+    private $username = 'username';
 
     /**
      * @var string
@@ -26,7 +26,6 @@ class IbmWatsonConfigurationTest extends TestCase
      * @var IbmWatsonConfiguration()
      */
     private $SUT;
-
 
     public function test_that_the_get_api_endpoint_method_returns_the_endpoint_url()
     {

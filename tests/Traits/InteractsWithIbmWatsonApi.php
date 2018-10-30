@@ -9,7 +9,7 @@ trait InteractsWithIbmWatsonApi
      */
     protected function getDummyApiResponse(): string
     {
-        return file_get_contents(
+        return \file_get_contents(
             base_path()
             . DIRECTORY_SEPARATOR
             . 'tests'
@@ -27,8 +27,8 @@ trait InteractsWithIbmWatsonApi
     {
         return [
             "Hello this is Arnold I'm testing their economics let's see how deep coach",
-            "How you doing today on August ninth",
-            "... I think it's fine"
+            'How you doing today on August ninth',
+            "... I think it's fine",
         ];
     }
 }

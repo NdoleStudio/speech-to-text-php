@@ -26,9 +26,9 @@ class StoreAudioFileController extends ApiBaseController
     private $commandDispatcher;
 
     /**
-     * @param Factory $viewFactory
+     * @param Factory               $viewFactory
      * @param StoreAudioFileRequest $request
-     * @param Dispatcher $commandDispatcher
+     * @param Dispatcher            $commandDispatcher
      */
     public function __construct(Factory $viewFactory, StoreAudioFileRequest $request, Dispatcher $commandDispatcher)
     {
@@ -48,7 +48,7 @@ class StoreAudioFileController extends ApiBaseController
 
         return $this->generateOkResponse([
             'success' => true,
-            'filename' => $fileName
+            'filename' => $fileName,
         ]);
     }
 }

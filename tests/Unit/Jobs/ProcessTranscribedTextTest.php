@@ -15,7 +15,7 @@ class ProcessTranscribedTextTest extends TestCase
      */
     private $transcribedText = [
         'line 1',
-        'line 2'
+        'line 2',
     ];
 
     /**

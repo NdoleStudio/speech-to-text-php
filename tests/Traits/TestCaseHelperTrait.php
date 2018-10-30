@@ -34,11 +34,11 @@ trait TestCaseHelperTrait
      */
     protected function methodName($callable)
     {
-        if (is_string($callable)) {
-            $callable = explode('::', $callable);
+        if (\is_string($callable)) {
+            $callable = \explode('::', $callable);
         }
 
-        if (is_array($callable) && count($callable) === 2 && isset($callable[0], $callable[1])) {
+        if (\is_array($callable) && \count($callable) === 2 && isset($callable[0], $callable[1])) {
             return (new ReflectionMethod($callable[0], $callable[1]))->getName();
         }
 
@@ -47,16 +47,17 @@ trait TestCaseHelperTrait
 
     /**
      * @param string $className
-     * @param array $keepOriginalMethods The method names of methods to not mock
+     * @param array  $keepOriginalMethods The method names of methods to not mock
+     *
+     * @throws \ReflectionException
      *
      * @return PHPUnit_Framework_MockObject_MockObject
-     * @throws \ReflectionException
      */
     protected function getMockForConcreteClass($className, array $keepOriginalMethods = [])
     {
         return $this->getMockBuilder($className)
             ->disableOriginalConstructor()
-            ->setMethods(array_diff($this->getAllPublicMethods($className), $keepOriginalMethods))
+            ->setMethods(\array_diff($this->getAllPublicMethods($className), $keepOriginalMethods))
             ->getMockForAbstractClass();
     }
 
@@ -74,7 +75,7 @@ trait TestCaseHelperTrait
         $methods = (new ReflectionClass($className))
             ->getMethods(ReflectionMethod::IS_PUBLIC);
 
-        return array_map(
+        return \array_map(
             function (ReflectionMethod $method) {
                 return $method->getName();
             },

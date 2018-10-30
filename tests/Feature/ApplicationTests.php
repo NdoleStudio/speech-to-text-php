@@ -28,7 +28,7 @@ class ApplicationTests extends TestCase
             Request::METHOD_POST,
             '/store-sound-file',
             [
-                'file' => $soundFile
+                'file' => $soundFile,
             ]
         );
 
@@ -47,7 +47,7 @@ class ApplicationTests extends TestCase
             Request::METHOD_POST,
             '/store-sound-file',
             [
-                'file' => $invalidSoundFile
+                'file' => $invalidSoundFile,
             ]
         );
 
@@ -68,7 +68,6 @@ class ApplicationTests extends TestCase
             [UploadedFile::fake()->create('sound.doc', 500)],
             [UploadedFile::fake()->create('sound.pdf', 6000)],
             [UploadedFile::fake()->create('sound.mp3', 6000)],
-
         ];
     }
 
@@ -83,7 +82,6 @@ class ApplicationTests extends TestCase
             [UploadedFile::fake()->create('sound.wma', 700)],
             [UploadedFile::fake()->create('sound.mp3', 2200)],
             [UploadedFile::fake()->create('sound.weba', 3400)],
-
         ];
     }
 }

@@ -5,11 +5,11 @@ namespace App\Jobs;
 use App\Traits\InteractsWithLocalFileSystem;
 use Illuminate\Bus\Dispatcher;
 use Illuminate\Bus\Queueable;
-use Illuminate\Filesystem\FilesystemManager;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use mikehaertl\shellcommand\Command;
 
 class PrepareAudioFileForTranscription implements ShouldQueue
@@ -34,8 +34,8 @@ class PrepareAudioFileForTranscription implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @param Dispatcher $commandDispatcher
-     * @param Command $shellCommand
+     * @param Dispatcher        $commandDispatcher
+     * @param Command           $shellCommand
      * @param FilesystemManager $filesystemManager
      */
     public function handle(Dispatcher $commandDispatcher, Command $shellCommand, FilesystemManager $filesystemManager)
@@ -45,29 +45,27 @@ class PrepareAudioFileForTranscription implements ShouldQueue
         $commandDispatcher->dispatch(new TranscribeAudioFile($this->fileName, $newFilename));
     }
 
-
     /**
      * @param FilesystemManager $filesystemManager
-     * @param Command $shellCommand
+     * @param Command           $shellCommand
      *
      * @return string
      */
     public function convertAudioFileToCorrectFormat(FilesystemManager $filesystemManager, Command $shellCommand): string
     {
         $filePath = $this->getFilePath($this->fileName);
-        $newFileName = 'new_' . pathinfo($this->fileName, PATHINFO_FILENAME) . '.flac';
+        $newFileName = 'new_' . \pathinfo($this->fileName, PATHINFO_FILENAME) . '.flac';
         $newFilePath = $this->getFilePath($newFileName);
 
-        if(!$filesystemManager->disk()->exists($newFilePath)) {
+        if (!$filesystemManager->disk()->exists($newFilePath)) {
             $shellCommand->setCommand('ffmpeg')
                 ->addArg('-i', $filePath)
                 ->addArg('-ac', 1, false)
                 ->addArg('-ar', 16000, false)
-                ->addArg(   "'{$newFilePath}'")
+                ->addArg("'{$newFilePath}'")
                 ->execute();
         }
 
         return $newFileName;
-
     }
 }
