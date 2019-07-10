@@ -7,12 +7,10 @@ php:
   - '7.2'
 before_script:
   - cp .env.testing .env
-  - composer install --no-dev
+  - composer install
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-  - ls
-  - ls -lah vendor
   - "./vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml"
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build  -t clover --exit-code $TRAVIS_TEST_RESULT; fi
