@@ -14,7 +14,7 @@
         "cross-env": "^5.2.0",
         "laravel-echo": "^1.5.4",
         "laravel-mix": "^2.0",
-        "lodash": "^4.17.13",
+        "lodash": "^4.17.19",
         "pusher": "^2.2.1",
         "pusher-js": "^4.4.0",
         "tailwindcss": "^0.6.6",
